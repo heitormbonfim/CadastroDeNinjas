@@ -8,10 +8,11 @@ import jakarta.persistence.*;
 public class NinjaModel {
     @Id // para criar o id automaticamente (sem setter ou getter)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // forma que vai ser gerado
-    Long id;
-    String nome;
-    String email;
-    int idade;
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
+
 
     public NinjaModel() {}
 
