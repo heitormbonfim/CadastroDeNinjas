@@ -13,6 +13,7 @@ public class NinjaModel {
     private String email;
     private int idade;
 
+
     public NinjaModel() {}
 
     public NinjaModel(String nome, String email, int idade) {
