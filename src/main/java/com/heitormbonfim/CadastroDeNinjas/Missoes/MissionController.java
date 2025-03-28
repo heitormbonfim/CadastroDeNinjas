@@ -1,4 +1,4 @@
-package com.heitormbonfim.CadastroDeNinjas;
+package com.heitormbonfim.CadastroDeNinjas.Missoes;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class NinjaController {
+public class MissionController {
 
-  @GetMapping("/welcome")
-  public String Welcome() {
-    return "Welcome to my first springboot API";
-  }
-
+    @GetMapping("/hello-missions")
+    public String hello() {
+        return "Hello from mission controller";
+    }
 }
