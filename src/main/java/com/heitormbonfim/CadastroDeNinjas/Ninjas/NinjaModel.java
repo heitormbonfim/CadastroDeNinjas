@@ -20,6 +20,8 @@ public class NinjaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // forma que vai ser gerado
     private Long id;
     private String nome;
+
+    @Column(unique = true) // torna a coluna única
     private String email;
     private int idade;
 
