@@ -2,12 +2,18 @@ package com.heitormbonfim.CadastroDeNinjas.Missoes;
 
 import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="tb_missions")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class MissionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,55 +27,7 @@ public class MissionModel {
     @OneToMany(mappedBy = "missions")
     private List<NinjaModel> ninjas;
 
-    public MissionModel(){}
-
-    public MissionModel(Long id, String title, ArrayList<String> objectives, Boolean isComplete) {
-        this.name = title;
-        this.objectives = objectives;
-        this.isComplete = isComplete;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<String> getObjectives() {
-        return objectives;
-    }
-
-    public void setObjectives(ArrayList<String> objectives) {
-        this.objectives = objectives;
-    }
-
     public void setAddObjective(String objective) {
         this.objectives.add(objective);
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public Boolean getComplete() {
-        return isComplete;
-    }
-
-    public void setComplete(Boolean complete) {
-        isComplete = complete;
-    }
-
-    public List<NinjaModel> getNinjas() {
-        return ninjas;
-    }
-
-    public void setNinjas(List<NinjaModel> ninjas) {
-        this.ninjas = ninjas;
     }
 }
