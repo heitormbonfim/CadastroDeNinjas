@@ -1,4 +1,4 @@
-package com.heitormbonfim.CadastroDeNinjas.Missoes;
+package com.heitormbonfim.CadastroDeNinjas.Missions;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

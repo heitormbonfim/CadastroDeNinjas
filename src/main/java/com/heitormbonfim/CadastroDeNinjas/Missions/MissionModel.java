@@ -1,4 +1,4 @@
-package com.heitormbonfim.CadastroDeNinjas.Missoes;
+package com.heitormbonfim.CadastroDeNinjas.Missions;
 
 import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
