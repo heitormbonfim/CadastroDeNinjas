@@ -33,8 +33,8 @@ public class NinjaModel {
 
     // Um ninja tem apenas uma única missão
     @ManyToOne()
-    @JoinColumn(name = "missions_id") // Foreign Key
-    private List<MissionModel> missions;
+    @JoinColumn(name = "mission_id") // Foreign Key
+    private MissionModel mission ;
 
 // All this job below can be done simply by using LOMBOK
 //    public NinjaModel() {}

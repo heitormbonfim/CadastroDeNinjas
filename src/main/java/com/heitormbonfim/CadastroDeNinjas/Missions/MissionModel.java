@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,12 +18,13 @@ public class MissionModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private List<String> objectives = new ArrayList<>();
+    private List<String> objectives;
     private String level;
+    @Column(name="is_complete")
     private Boolean isComplete = false;
 
     // Uma missão pode ter vários ninjas
-    @OneToMany(mappedBy = "missions")
+    @OneToMany(mappedBy = "mission")
     private List<NinjaModel> ninjas;
 
     public void setAddObjective(String objective) {
