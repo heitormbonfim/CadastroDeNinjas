@@ -15,14 +15,20 @@ import java.util.List;
 @NoArgsConstructor // public NinjaModel() {}
 @AllArgsConstructor // public NinjaModel(<all args>) { this.<args> = <args> }
 @Data // create all getters and setters
+// OBS: O ORM vai scannear por mudanças, mas ele só vai adicionar mudanças, não vai remover, tem que ser
+//      removido via SQL diremante no banco de dados
 public class NinjaModel {
     @Id // para criar o id automaticamente (sem setter ou getter)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // forma que vai ser gerado
     private Long id;
+
+    @Column(name = "name") // Dá pra personalizar o nome das colunas (diferenciando do nome da variável)
     private String nome;
 
     @Column(unique = true) // torna a coluna única
     private String email;
+
+    @Column(name = "age")
     private int idade;
 
     // Um ninja tem apenas uma única missão
