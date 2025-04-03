@@ -29,9 +29,9 @@ public class NinjaController {
     return ninjaService.listAllNinjas();
   }
   // SEARCH NINJA BY ID
-  @GetMapping("/id")
-  public String getNinjaById() {
-    return "Ninja got by id";
+  @GetMapping("/{id}") // {} creates a poth variable called id
+  public NinjaModel getNinjaById(@PathVariable Long id) { // @PathVariable consumes the data that was created at {}
+    return ninjaService.getNinjaById(id);
   }
   // UPDATE NINJA DATA
   @PutMapping("/id")
