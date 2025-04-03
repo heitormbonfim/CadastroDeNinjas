@@ -2,12 +2,19 @@ package com.heitormbonfim.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
+  private NinjaService ninjaService;
+
+  public NinjaController(NinjaService ninjaService) {
+    this.ninjaService = ninjaService;
+  }
 
   @GetMapping("/welcome")
-  public String Welcome() {
+  public String welcome() {
     return "Welcome to my first springboot API";
   }
 
@@ -18,8 +25,8 @@ public class NinjaController {
   }
   // GET ALL NINJAS
   @GetMapping("/all")
-  public String getAllNinjas() {
-    return "Ninjas";
+  public List<NinjaModel> getAllNinjas() {
+    return ninjaService.listAllNinjas();
   }
   // SEARCH NINJA BY ID
   @GetMapping("/id")

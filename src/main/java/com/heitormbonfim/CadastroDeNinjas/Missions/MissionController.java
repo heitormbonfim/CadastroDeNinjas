@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/missions")
 public class MissionController {
 
-    @GetMapping("/hello-missions")
-    public String hello() {
-        return "Hello from mission controller";
+    @GetMapping("/test")
+    public String Welcome() {
+        return "Mission router is working";
     }
-
 
 }
