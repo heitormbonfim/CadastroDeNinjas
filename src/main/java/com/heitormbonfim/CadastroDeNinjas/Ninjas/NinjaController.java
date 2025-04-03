@@ -3,7 +3,7 @@ package com.heitormbonfim.CadastroDeNinjas.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninjas")
 public class NinjaController {
 
   @GetMapping("/welcome")
@@ -22,17 +22,17 @@ public class NinjaController {
     return "Ninjas";
   }
   // SEARCH NINJA BY ID
-  @GetMapping("/ninjaID")
+  @GetMapping("/id")
   public String getNinjaById() {
     return "Ninja got by id";
   }
   // UPDATE NINJA DATA
-  @PutMapping("/ninjaID")
+  @PutMapping("/id")
   public String updateNinja() {
     return "Ninja updated";
   }
   // DELETE NINJA
-  @DeleteMapping("/ninjaID")
+  @DeleteMapping("/id")
   public String deleteNinja() {
     return "Ninja deleted";
   }
