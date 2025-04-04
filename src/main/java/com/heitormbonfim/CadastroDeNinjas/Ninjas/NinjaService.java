@@ -27,4 +27,9 @@ public class NinjaService {
 
         return ninja.orElse(null); // return null in case the user is not found
     }
+
+    // Create ninja
+    public NinjaModel createNinja(NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
 }

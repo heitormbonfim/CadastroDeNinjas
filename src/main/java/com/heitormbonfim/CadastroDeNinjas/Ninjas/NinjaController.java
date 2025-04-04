@@ -20,8 +20,9 @@ public class NinjaController {
 
   // ADD NINJAS
   @PostMapping("/add")
-  public String createNinja() {
-    return "Ninja created";
+  public NinjaModel createNinja(@RequestBody NinjaModel ninja) {
+
+    return ninjaService.createNinja(ninja);
   }
   // GET ALL NINJAS
   @GetMapping("/all")
