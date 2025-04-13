@@ -1,5 +1,7 @@
 package com.heitormbonfim.CadastroDeNinjas.Ninjas;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,22 +28,45 @@ public class NinjaController {
   }
   // GET ALL NINJAS
   @GetMapping("/all")
-  public List<NinjaDTO> getAllNinjas() {
-    return ninjaService.listAllNinjas();
+  public ResponseEntity<List<NinjaDTO>> getAllNinjas() {
+    List<NinjaDTO> ninjas = ninjaService.listAllNinjas();
+    return ResponseEntity.ok(ninjas);
   }
   // SEARCH NINJA BY ID
   @GetMapping("/{id}") // {} creates a poth variable called id
-  public NinjaDTO getNinjaById(@PathVariable Long id) { // @PathVariable consumes the data that was created at {}
-    return ninjaService.getNinjaById(id);
+  // the ? is a generic type since you cannot add T in this case
+  public ResponseEntity<?>  getNinjaById(@PathVariable Long id) { // @PathVariable consumes the data that was created at {}
+    NinjaDTO ninja = ninjaService.getNinjaById(id);
+
+    if (ninja != null) {
+      return ResponseEntity.status(HttpStatus.OK).body(ninja);
+    }
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ninja not found");
   }
   // UPDATE NINJA DATA
   @PutMapping("/{id}")
-  public NinjaDTO updateNinja(@PathVariable Long id, @RequestBody NinjaDTO ninjaUpdated) {
-    return ninjaService.updateNinja(id, ninjaUpdated);
+  public ResponseEntity<?> updateNinja(@PathVariable Long id, @RequestBody NinjaDTO ninjaUpdated) {
+    NinjaDTO ninjaExists = ninjaService.getNinjaById(id);
+
+    if (ninjaExists != null) {
+      NinjaDTO ninja = ninjaService.updateNinja(id, ninjaUpdated);
+      return ResponseEntity.status(HttpStatus.OK).body(ninja);
+    }
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ninja not found");
+
   }
   // DELETE NINJA
   @DeleteMapping("/{id}")
-  public void deleteNinja(@PathVariable Long id) {
-    ninjaService.deleteNinjaById(id);
+  public ResponseEntity<?> deleteNinja(@PathVariable Long id) {
+    NinjaDTO ninjaExist = ninjaService.getNinjaById(id);
+
+    if (ninjaExist != null) {
+      ninjaService.deleteNinjaById(id);
+      return ResponseEntity.status(HttpStatus.OK).body("Ninja Deleted");
+    }
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ninja not found");
   }
 }
