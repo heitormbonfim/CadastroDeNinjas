@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor // public NinjaModel() {}
 @AllArgsConstructor // public NinjaModel(<all args>) { this.<args> = <args> }
 @Data // create all getters and setters
+@ToString(exclude = "mission_id") // since mission is in an infinity loop
 // OBS: O ORM vai scannear por mudanças, mas ele só vai adicionar mudanças, não vai remover, tem que ser
 //      removido via SQL diremante no banco de dados
 public class NinjaModel {
