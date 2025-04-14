@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Service // Precisa adicionar para identificar como camada de serviço
 public class NinjaService {
     // @Autowired // remove a necessidade de usar construtores
-    private NinjaRepository ninjaRepository;
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
