@@ -1,5 +1,9 @@
 package com.heitormbonfim.CadastroDeNinjas.Ninjas;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +20,18 @@ public class NinjaController {
   }
 
   @GetMapping("/welcome")
+  @Operation(summary = "Welcome Message", description = "This route returns a welcome message for those who access it")
   public String welcome() {
     return "Welcome to my first springboot API";
   }
 
   // ADD NINJAS
   @PostMapping("/add")
+  @Operation(summary = "Add a new User", description = "This route creates a new ninja and saves it in the database")
+  @ApiResponses(value = {
+          @ApiResponse(responseCode = "201", description = "Ninja created successfully"),
+          @ApiResponse(responseCode = "400", description = "Missing attributes")
+  })
   public NinjaDTO createNinja(@RequestBody NinjaDTO ninja) {
 
     return ninjaService.createNinja(ninja);
@@ -46,7 +56,15 @@ public class NinjaController {
   }
   // UPDATE NINJA DATA
   @PutMapping("/{id}")
-  public ResponseEntity<?> updateNinja(@PathVariable Long id, @RequestBody NinjaDTO ninjaUpdated) {
+  @ApiResponses(value = {
+          @ApiResponse(responseCode = "200", description = "Ninja updated successfully"),
+          @ApiResponse(responseCode = "400", description = "Missing attributes"),
+  })
+  public ResponseEntity<?> updateNinja(
+          @Parameter(description = "User sends the id in the request path")
+          @PathVariable Long id,
+          @Parameter(description = "User sends the ninja data to be sent in the request body")
+          @RequestBody NinjaDTO ninjaUpdated) {
     NinjaDTO ninjaExists = ninjaService.getNinjaById(id);
 
     if (ninjaExists != null) {
