@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/missions")
 public class MissionController {
+    private final MissionService missionService;
+
+    public MissionController(MissionService missionService) {
+        this.missionService = missionService;
+    }
 
     @GetMapping("/test")
     public String Welcome() {
