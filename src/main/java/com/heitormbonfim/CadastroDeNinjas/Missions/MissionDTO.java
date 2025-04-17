@@ -1,6 +1,6 @@
 package com.heitormbonfim.CadastroDeNinjas.Missions;
 
-import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaDTO;
+import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +16,5 @@ public class MissionDTO {
     private List<String> objectives;
     private String level;
     private Boolean isComplete = false;
-    private List<NinjaDTO> ninjas;
+    private List<NinjaModel> ninjas;
 }
