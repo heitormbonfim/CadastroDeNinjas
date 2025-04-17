@@ -1,7 +1,6 @@
 package com.heitormbonfim.CadastroDeNinjas.Missions;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaDTO;
 import com.heitormbonfim.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,7 +29,7 @@ public class MissionModel {
     // Uma missão pode ter vários ninjas
     @OneToMany(mappedBy = "mission")
     @JsonIgnore // evita loop de serialização
-    private List<NinjaDTO> ninjas;
+    private List<NinjaModel> ninjas;
 
     public void setAddObjective(String objective) {
         this.objectives.add(objective);
