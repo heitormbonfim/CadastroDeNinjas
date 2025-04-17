@@ -1,5 +1,8 @@
 package com.heitormbonfim.CadastroDeNinjas.Missions;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MissionMapper {
     public MissionModel map(MissionDTO missionDto) {
         MissionModel missionModel = new MissionModel();
