@@ -32,9 +32,9 @@ public class NinjaController {
           @ApiResponse(responseCode = "201", description = "Ninja created successfully"),
           @ApiResponse(responseCode = "400", description = "Missing attributes")
   })
-  public NinjaDTO createNinja(@RequestBody NinjaDTO ninja) {
-
-    return ninjaService.createNinja(ninja);
+  public ResponseEntity<?> createNinja(@RequestBody NinjaDTO ninja) {
+    NinjaDTO newNinja = ninjaService.createNinja(ninja);
+    return ResponseEntity.status(201).body(newNinja);
   }
   // GET ALL NINJAS
   @GetMapping("/all")
